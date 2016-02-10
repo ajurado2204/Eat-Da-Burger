@@ -1,0 +1,23 @@
+{
+  "name": "eat-da-burger",
+  "version": "1.0.0",
+  "description": "single page app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajurado2204/Eat-Da-Burger.git"
+  },
+  "author": "Alejandra Jurado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajurado2204/Eat-Da-Burger/issues"
+  },
+  "homepage": "https://github.com/ajurado2204/Eat-Da-Burger#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

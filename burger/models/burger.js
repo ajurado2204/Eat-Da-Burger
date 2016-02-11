@@ -1,9 +1,10 @@
 /**
  * Created by Ale on 2/9/16.
  */
-var orm = require('orm.js');
+var orm = require('./orm.js');
 
-exports.burgers = function(){
+exports.burgers = function() {
 
-  orm.ormFunc();
+  orm.ormAddFunc(/*burger name*/);
+
 }

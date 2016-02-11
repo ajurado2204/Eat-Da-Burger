@@ -11,5 +11,6 @@ exports.connectionFunc = function(){
     database : 'burgers_db'
   });
 
-  return connection
+
+  return connection;
 }

@@ -1,27 +1,35 @@
 /**
  * Created by Ale on 2/9/16.
  */
-var mysqlConnection = require('connection.js');
+var mysqlConnection = require('./connection.js');
 var connection = mysqlConnection.connectionFunc();
 connection.connect();
 
+exports.ormSelectAllFunc = function(callBackFunc){
+  connection.query("SELECT * from burgers", function (err, rows) {
+    if (err) {throw err;}
 
-exports.ormAddFunc = function(burger){
+    var results = {
+      rows : rows
+    };
 
-  var burgerName = burger;
-  connection.getConnection(function(err, result){
-    connection.query("INSERT INTO burgers SET ?", [burgerName], function (err, result){
-      if(err) {throw err}
-    });
+    callBackFunc(results);
   });
 }
 
-exports.ormDevourFunc = function(){
+exports.ormAddFunc = function(burger){
 
-  var burgerName = //Whichever burger the user clicks on
-  connection.getConnection(function(err, result){
-    connection.query("DELETE FROM burgers WHERE burger_name ?", [burgerName], function (err, result){
-      if(err) {throw err}
-    });
+  var post  = {burger_name: burger, devoured: 0};
+  connection.query("INSERT INTO burgers SET ?", post, function (err, results){
+    if(err) {throw err;}
+
+  });
+}
+
+exports.setDevourFunc = function(id){
+
+  var post = {ID: id};
+  connection.query("UPDATE burgers SET devoured = 1 WHERE ID = ?", post, function(err,result){
+    if(err) {throw err;}
   });
 }

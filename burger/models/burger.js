@@ -1,10 +1,16 @@
 /**
  * Created by Ale on 2/9/16.
  */
-var orm = require('./orm.js');
+var orm = require('../config/orm.js');
 
-exports.burgers = function() {
+exports.burgerName = function(burgerName) {
+  orm.ormAddFunc(burgerName);
+}
 
-  orm.ormAddFunc(/*burger name*/);
+exports.displayAll = function() {
+  return orm.ormSelectAllFunc();;
+}
 
+exports.devourBurger = function(id){
+  orm.ormDevourFunc(id);
 }

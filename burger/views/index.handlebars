@@ -1,3 +1,24 @@
-<h1>Flavor: {{{name}}}</h1>
-<h1>Price {{{price}}}</h1>
-<h1>Awesomeness {{{awesomeness}}}</h1>
+<form action="/" method="POST">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>HELLO</h1>
+      {{#each rows}}
+
+
+        <h3>{{ID}}: {{{burger_name}}}</h3>
+        <a href="/delete/{{ID}}">delete</a>
+      {{/each}}
+    </div>
+    <!--<div class="col-md-6">-->
+      <!--<h1>HELLO</h1>-->
+      <!--{{#each rows}}-->
+        <!--<h3>{{ID}}: {{{burger_name}}}</h3>-->
+        <!--<a href="/delete/{{ID}}">delete</a>-->
+      <!--{{/each}}-->
+    <!--</div>-->
+  </div>
+
+
+  <textarea class="form-control" rows="3" name="burger"></textarea>
+  <button class="btn btn-default" type="submit">Submit</button>
+</form>

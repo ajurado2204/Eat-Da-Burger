@@ -2,19 +2,23 @@
  * Created by Ale on 2/9/16.
  */
 var express = require('express');
-var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var orm = require('./burger/config/orm.js');
 
 var app = express();
 var port = process.env.NODE_ENV || 8080;
+
 app.use(bodyParser.urlencoded({extended: false}));
+app.use('/js', express.static("public/js"));
+app.use('/css', express.static("public/css"));
+app.use('/images', express.static("public/images"));
 
 app.engine('handlebars', exphbs({defaultLayout: process.cwd() + '/burger/views/layouts/main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', function(req, res){
+
+app.get('/main', function(req, res){
 
   var callBackFunc = function(result) {
     res.render(process.cwd() + '/burger/views/index', result);
@@ -23,7 +27,8 @@ app.get('/', function(req, res){
   orm.ormSelectAllFunc(callBackFunc);
 });
 
-app.post('/', function(req, res){
+
+app.post('/main', function(req, res){
 
   orm.ormAddFunc(req.body.burger);
   var callBackFunc = function(result){
@@ -33,7 +38,8 @@ app.post('/', function(req, res){
   orm.ormSelectAllFunc(callBackFunc);
 });
 
-app.get('/delete/:id', function(req, res){
+
+app.get('/devour/:id', function(req, res){
 
   orm.setDevourFunc(req.params.id);
 
@@ -41,7 +47,7 @@ app.get('/delete/:id', function(req, res){
     res.render(process.cwd() + '/burger/views/index', result);
   }
 
-  orm.ormSelectAllFunc(callBackFunc);
+  res.redirect('/main');
 });
 
 

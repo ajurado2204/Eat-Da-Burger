@@ -28,8 +28,9 @@ exports.ormAddFunc = function(burger){
 
 exports.setDevourFunc = function(id){
 
-  var post = {ID: id};
-  connection.query("UPDATE burgers SET devoured = 1 WHERE ID = ?", post, function(err,result){
+  connection.query("UPDATE burgers SET devoured = 1 WHERE ID = ?", [id], function(err,result){
     if(err) {throw err;}
+
+
   });
 }

@@ -31,6 +31,5 @@ exports.setDevourFunc = function(id){
   connection.query("UPDATE burgers SET devoured = 1 WHERE ID = ?", [id], function(err,result){
     if(err) {throw err;}
 
-
   });
 }
